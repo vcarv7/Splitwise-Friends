@@ -57,7 +57,7 @@ Out of scope (later phases): the six dashboard cards, mock data, page grid, and 
 
 ## Progress
 
-Phase 0 and Phase 1 complete.
+Phase 0 and Phase 1 complete. Commit `34623bc`.
 
 Verification observed:
 

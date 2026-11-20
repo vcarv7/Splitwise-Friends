@@ -1,1 +1,1 @@
-export const APP_NAME = 'Splitwise Casa'
+export const APP_NAME = 'Splitwise Friends'
