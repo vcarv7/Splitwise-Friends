@@ -5,12 +5,18 @@
   --font-sans: 'Inter', sans-serif;
 
   /* Brand palette: use these tokens instead of raw hex values in components. */
-  --color-brand: #1cc274;
-  --color-brand-dark: #0f6c45;
-  --color-brand-darker: #0a4d31;
-  --color-brand-soft: #e8f5ee;
+  --color-brand: #008D4D;
+  --color-brand-dark: #00703D;
+  --color-brand-darker: #00562F;
+  --color-brand-soft: #E5F3ED;
 
   /* App surfaces */
-  --color-surface: #fdfbf7;
-  --color-surface-muted: #f8f9fa;
+  --color-surface: #FAF7EA;
+  --color-surface-muted: #F1EDDD;
+
+  /* Text and status colors */
+  --color-ink: #17241B;
+  --color-chip-success: #E1F2EA;
+  --color-chip-warn: #EEE6CC;
+  --color-badge-warn: #F0E8CE;
 }
