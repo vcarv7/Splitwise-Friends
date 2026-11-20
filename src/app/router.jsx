@@ -7,6 +7,8 @@ import ActividadPage from '@/features/actividad/pages/ActividadPage.jsx'
 import GruposPage from '@/features/grupos/pages/GruposPage.jsx'
 import PerfilPage from '@/features/perfil/pages/PerfilPage.jsx'
 import AjustesPage from '@/features/ajustes/pages/AjustesPage.jsx'
+import NuevoGastoPage from '@/features/gastos/pages/NuevoGastoPage.jsx'
+import LiquidarPage from '@/features/liquidaciones/pages/LiquidarPage.jsx'
 
 // `handle.title` feeds the Header directly through useMatches(), so a new page
 // only needs its title declared here instead of being hardcoded in the layout.
@@ -21,6 +23,8 @@ export const router = createBrowserRouter([
       { path: 'grupos', element: <GruposPage />, handle: { title: 'Grupos' } },
       { path: 'perfil', element: <PerfilPage />, handle: { title: 'Perfil' } },
       { path: 'ajustes', element: <AjustesPage />, handle: { title: 'Ajustes' } },
+      { path: 'nuevo-gasto', element: <NuevoGastoPage />, handle: { title: 'Nuevo gasto' } },
+      { path: 'liquidar', element: <LiquidarPage />, handle: { title: 'Liquidar saldos' } },
       { path: '*', element: <NotFoundPage />, handle: { title: 'Página no encontrada' } },
     ],
   },
