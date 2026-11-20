@@ -46,6 +46,14 @@ Out of scope (later phases): the six dashboard cards, mock data, page grid, and 
 - [x] T13 — `data/inicio.mock.js` fixture with the shapes the cards consume.
 - [x] T14 — `hooks/useDashboardData.js` exposing `{ data, loading, error }`.
 - [x] T15 — Fixture counts match the design labels (2 active groups, 2 pending settlements).
+- [x] T16 — `DashboardIntro` with hour-based greeting and both actions.
+- [x] T17 — `BalanceSummaryCard` solid-brand hero.
+- [x] T18 — `MonthlySpendCard` with trend and progress.
+- [x] T19 — `GroupsOverviewCard` with icon registry and create-group action.
+- [x] T20 — `RecentActivityCard` table with a stacked mobile variant.
+- [x] T21 — `UpcomingSettlementsCard` with the overflow fix.
+- [x] T22 — Page grid: 2fr/1fr balance row, activity below, right rail.
+- [x] T23 — Actions wired; `nuevo-gasto` and `liquidar` placeholder routes added.
 
 ## Acceptance criteria
 
@@ -82,4 +90,27 @@ Verification observed:
 
 ## Next step
 
-Phase 3: the six dashboard components.
+Phase 3-5 complete. Commit `ea17389`.
+
+Verification observed:
+
+- `pnpm build` → `✓ 2160 modules transformed. ✓ built in 411ms` (up from 2142: the cards are
+  now imported by the page, so the production build compiles them for real instead of tree-shaking them)
+- `node node_modules/eslint/bin/eslint.js .` → exit 0, no output
+- All eleven new modules transform through a freshly restarted dev server (HTTP 200)
+
+Deviations worth knowing:
+
+- `BalanceSummaryCard` renders a plain `div`, not `Card`. Tailwind emits `bg-white` after
+  `bg-brand`, so overriding would require an `!important` escape hatch. The hero surface is
+  its own thing; that is not a white card.
+- Icons render through `createElement` because the React Compiler static-components lint rule
+  rejects a registry lookup used as a JSX tag. Data still stores strings.
+- The dev server must be restarted after adding new Tailwind utilities; an old process served a
+  stale utility set that dropped `md:block` and friends.
+
+## Remaining
+
+- Sidebar and Header still hardcode the user ("Laura Rodríguez", "LR"). They should consume the
+  same user data the dashboard already receives.
+- Group rows navigate to `/grupos` instead of a real `/grupos/:id` detail page.
