@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+
+  /* Brand palette: use these tokens instead of raw hex values in components. */
+  --color-brand: #1cc274;
+  --color-brand-dark: #0f6c45;
+  --color-brand-darker: #0a4d31;
+  --color-brand-soft: #e8f5ee;
+
+  /* App surfaces */
+  --color-surface: #fdfbf7;
+  --color-surface-muted: #f8f9fa;
+}
