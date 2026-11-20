@@ -43,6 +43,9 @@ Out of scope (later phases): the six dashboard cards, mock data, page grid, and 
 - [x] T10 — `IconBadge.jsx` tinted icon container.
 - [x] T11 — `ProgressBar.jsx` accessible progress bar.
 - [x] T12 — `Avatar.jsx` initials circle.
+- [x] T13 — `data/inicio.mock.js` fixture with the shapes the cards consume.
+- [x] T14 — `hooks/useDashboardData.js` exposing `{ data, loading, error }`.
+- [x] T15 — Fixture counts match the design labels (2 active groups, 2 pending settlements).
 
 ## Acceptance criteria
 
@@ -67,6 +70,16 @@ Verification observed:
 - All seven new tokens present in `dist/assets/*.css`
 - No raw hex outside `src/index.css`
 
+Phase 2 complete. Commit `77132da`. Route: direct inline (data authoring against a
+fixture already specified by the design; no research or exploration needed).
+
+Verification observed:
+
+- Both new modules transform through the dev server (HTTP 200, no transform error)
+- `node node_modules/eslint/bin/eslint.js .` → exit 0, no output
+- `groups.length === 2` and `settlements.length === 2`, matching "2 grupos activos" and
+  "Tienes 2 pagos pendientes de revisar." in the design
+
 ## Next step
 
-Phase 2: mock data module plus `useDashboardData` hook.
+Phase 3: the six dashboard components.
