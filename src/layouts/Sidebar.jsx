@@ -36,7 +36,7 @@ export default function Sidebar() {
         <div className="bg-brand p-2 rounded-xl text-white">
           <ArrowLeftRight size={20} strokeWidth={2.5} />
         </div>
-        <span className="font-bold text-gray-900 text-lg tracking-tight">Splitwise Casa</span>
+        <span className="font-bold text-gray-900 text-lg tracking-tight">Splitwise Friends</span>
       </div>
 
       {/* Navigation */}
