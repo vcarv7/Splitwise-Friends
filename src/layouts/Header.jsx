@@ -1,5 +1,7 @@
 import { Search, Bell, ChevronDown } from 'lucide-react'
 import { useMatches } from 'react-router-dom'
+import { useAuth } from '@/features/auth/hooks/useAuth.js'
+import { getInitials } from '@/features/auth/utils.js'
 
 const dateLabel = new Intl.DateTimeFormat('es-ES', {
   weekday: 'long',
@@ -10,6 +12,8 @@ const dateLabel = new Intl.DateTimeFormat('es-ES', {
 const capitalizedDate = dateLabel.charAt(0).toUpperCase() + dateLabel.slice(1)
 
 export default function Header() {
+  const { user } = useAuth()
+  const initials = getInitials(user?.username)
   const matches = useMatches()
   const title =
     [...matches].reverse().find((match) => match.handle?.title)?.handle.title ?? ''
@@ -54,7 +58,7 @@ export default function Header() {
           className="flex items-center gap-2 p-1 pr-2 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors"
         >
           <div className="w-8 h-8 rounded-full bg-brand-soft text-brand-dark flex items-center justify-center font-bold text-xs">
-            LR
+            {initials}
           </div>
           <ChevronDown size={14} className="text-gray-500" />
         </button>

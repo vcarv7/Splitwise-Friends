@@ -6,20 +6,22 @@ import GroupsOverviewCard from '../components/GroupsOverviewCard.jsx'
 import RecentActivityCard from '../components/RecentActivityCard.jsx'
 import UpcomingSettlementsCard from '../components/UpcomingSettlementsCard.jsx'
 import { useDashboardData } from '../hooks/useDashboardData.js'
+import { useAuth } from '@/features/auth/hooks/useAuth.js'
 
 export default function InicioPage() {
   const { data, loading, error } = useDashboardData()
+  const { user } = useAuth()
   const navigate = useNavigate()
 
   if (loading) return <p className="text-sm text-gray-500">Cargando resumen…</p>
   if (error) return <p className="text-sm text-red-600">No se pudo cargar el resumen.</p>
 
-  const { user, balance, monthSpend, groups, activity, settlements } = data
+  const { balance, monthSpend, groups, activity, settlements } = data
 
   return (
     <div className="max-w-7xl mx-auto space-y-6">
       <DashboardIntro
-        userName={user.name.split(' ')[0]}
+        userName={user?.username ?? 'Invitado'}
         onAddExpense={() => navigate('/nuevo-gasto')}
         onSettleUp={() => navigate('/liquidar')}
       />

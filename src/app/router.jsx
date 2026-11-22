@@ -3,6 +3,9 @@ import MainLayout from '@/layouts/MainLayout.jsx'
 import ErrorPage from './ErrorPage.jsx'
 import NotFoundPage from './NotFoundPage.jsx'
 import InicioPage from '@/features/dashboard/pages/InicioPage.jsx'
+import RequireAuth from '@/features/auth/components/RequireAuth.jsx'
+import LoginPage from '@/features/auth/pages/LoginPage.jsx'
+import RegisterPage from '@/features/auth/pages/RegisterPage.jsx'
 import ActividadPage from '@/features/actividad/pages/ActividadPage.jsx'
 import GruposPage from '@/features/grupos/pages/GruposPage.jsx'
 import PerfilPage from '@/features/perfil/pages/PerfilPage.jsx'
@@ -14,11 +17,19 @@ import LiquidarPage from '@/features/liquidaciones/pages/LiquidarPage.jsx'
 // only needs its title declared here instead of being hardcoded in the layout.
 export const router = createBrowserRouter([
   {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
+  },
+  {
     path: '/',
     element: <MainLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <InicioPage />, handle: { title: 'Inicio' } },
+      { index: true, element: <RequireAuth><InicioPage /></RequireAuth>, handle: { title: 'Inicio' } },
       { path: 'actividad', element: <ActividadPage />, handle: { title: 'Actividad' } },
       { path: 'grupos', element: <GruposPage />, handle: { title: 'Grupos' } },
       { path: 'perfil', element: <PerfilPage />, handle: { title: 'Perfil' } },

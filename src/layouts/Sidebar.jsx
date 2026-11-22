@@ -1,5 +1,7 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { APP_NAME } from '@/constants/app.js'
+import { useAuth } from '@/features/auth/hooks/useAuth.js'
+import { getInitials } from '@/features/auth/utils.js'
 import {
   LayoutGrid,
   Activity,
@@ -30,6 +32,17 @@ const navGroups = [
 ]
 
 export default function Sidebar() {
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
+  const name = user?.username ?? 'Invitado'
+  const initials = getInitials(user?.username)
+  const email = user?.email ?? ''
+
+  function handleLogout() {
+    logout()
+    navigate('/login', { replace: true })
+  }
+
   return (
     <aside className="w-[280px] shrink-0 h-full bg-white border-r border-gray-100 flex flex-col">
       {/* Logo */}
@@ -79,16 +92,17 @@ export default function Sidebar() {
         <div className="bg-surface-muted rounded-2xl p-4 flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-brand-soft text-brand-dark flex items-center justify-center font-bold text-sm">
-              LR
+              {initials}
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-bold text-gray-900 leading-tight">Laura Rodríguez</span>
-              <span className="text-xs text-gray-500">laura.rodriguez@email.com</span>
+              <span className="text-sm font-bold text-gray-900 leading-tight">{name}</span>
+              <span className="text-xs text-gray-500">{email}</span>
             </div>
           </div>
 
           <button
             type="button"
+            onClick={handleLogout}
             className="flex items-center gap-2 text-sm font-medium text-brand-dark hover:text-brand-darker transition-colors mt-2 text-left"
           >
             <LogOut size={16} />
